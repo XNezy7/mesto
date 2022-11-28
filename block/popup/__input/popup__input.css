@@ -1,4 +1,4 @@
-.pop_up__input{
+.popup__input{
     padding: 0;
     display: flex;
     /* gap: 30px; */
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 580px) {
-    .pop_up__input{
+    .popup__input{
         width: 238px;
         height: 14px;
         margin: 0 0 30px 22px;

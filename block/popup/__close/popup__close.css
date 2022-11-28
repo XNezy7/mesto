@@ -1,7 +1,7 @@
-.pop_up__close{
+.popup__close{
     cursor: pointer;
 }
 
-.pop_up__close:hover{
+.popup__close:hover{
     opacity: .6;
 }

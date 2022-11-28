@@ -1,12 +1,12 @@
 // Находим форму в DOM
-let formElement = document.querySelector(".pop_up");
+let formElement = document.querySelector(".popup");
 // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
 let nameInput = document.querySelector("#EditName");
 // Воспользуйтесь инструментом .querySelector()
 let jobInput = document.querySelector("#EditJob");
 let profileButton = document.querySelector(".profile__edit") 
-let popUpClose = document.querySelector(".pop_up__close")
+let popUpClose = document.querySelector(".popup__close")
  // Воспользуйтесь инструментом .querySelector()
 
 // Обработчик «отправки» формы, хотя пока

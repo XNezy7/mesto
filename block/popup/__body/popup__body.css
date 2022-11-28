@@ -1,4 +1,4 @@
-.pop_up__body{
+.popup__body{
     margin: 225px auto;
     width: 430px;
     height: 330px;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 580px) {
-    .pop_up__body{
+    .popup__body{
         width: 282px;
         height: 322px;
     }
