@@ -1,125 +1,99 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
     <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
+
 <body>
-<div class="page">
-    <header class="header">
-        <div class="header__logo"></div>
-        <div class="header__line"></div>
-    </header>
-<main>
-    <!-- <section class="profile">
-        <div class="profile__image"></div>
-        <div>
-        <h2 class="profile__title">Жак-Ив Кусто</h2>
-        <p class="profile__subtitle">Исследователь океана</p>
-        </div>
-        <div class="profile__edit">
-        <button type="button" class="profile__button">
-            <div class="profile__rectangle"></div>
-        </button>
+    <div class="page">
+        <header class="header">
+            <div class="header__logo"></div>
+            <div class="header__line"></div>
+        </header>
+        <main>
+            <section class="profile">
+                <div class="profile__image"></div>
+                <div class="profile__grid">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button type="button" class="profile__button"></button>
+                    <div class="profile__edit"></div>
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>
+                <div class="profile__add"><button type="button" class="profile__button" id="open_pop_up"></button></div>
+            </section>
+            <section class="places">
+                <ul class="places__list">
+                    <li class="places__item card">
+                        <img class="card__image" src="./images/изображение_2022-10-28_145901747.png" alt="Карачаевск">
+                        <div class="card__description">
+                            <h2 class="card__title">Карачаевск</h2>
+                            <button type="button" class="card__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="places__item card">
+                        <img class="card__image" src="./images/изображение_2022-10-28_145917455.png" alt="Эльбрус">
+                        <div class="card__description">
+                            <h2 class="card__title">Гора Эльбрус</h2>
+                            <button type="button" class="card__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="places__item card">
+                        <img class="card__image" src="./images/изображение_2022-10-28_145926068.png" alt="Домбай">
+                        <div class="card__description">
+                            <h2 class="card__title">Домбай</h2>
+                            <button type="button" class="card__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="places__item card">
+                        <img class="card__image" src="./images/изображение_2022-10-28_145930853.png" alt="Эльбрус">
+                        <div class="card__description">
+                            <h2 class="card__title">Гора Эльбрус</h2>
+                            <button type="button" class="card__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="places__item card">
+                        <img class="card__image" src="./images/изображение_2022-10-28_145935089.png" alt="Домбай">
+                        <div class="card__description">
+                            <h2 class="card__title">Домбай</h2>
+                            <button type="button" class="card__like-button"></button>
+                        </div>
+                    </li>
+                    <li class="places__item card">
+                        <img class="card__image" src="./images/изображение_2022-10-28_145949498.png" alt="Карачаевск">
+                        <div class="card__description">
+                            <h2 class="card__title">Карачаево-Ч...</h2>
+                            <button type="button" class="card__like-button"></button>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="popup">
+                <form action="#" class="popup__container">
+                    <div class="popup__body">
+                        <a class="popup__close"><img class="popup__exit" src="./images/exitPop_Up.svg"
+                                alt="Крестик"></a>
+                        <h3 class="popup__title">Редактировать профиль</h3>
+                        <label class="popup__label">
+                            <input id="EditName" class="popup__input" type="text" name="Name" value="Жак-Ив Кусто">
+                        </label>
+                        <label class="popup__label">
+                            <input id="EditJob" class="popup__input" type="text" name="Work"
+                                value="Исследователь океана">
+                        </label>
+                        <button type="submit" class="popup__button">Сохранить</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__author">&copy; 2022 Левон Максудян</p>
+        </footer>
     </div>
-    <div class="profile__add">
-        <button type="button" class="profile__button">
-            <div class="profile__plus"></div>
-        </button>
-    </div> -->
-    <!-- <section class="profile">
-        <div class="profile__image"></div>
-        <div>
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <div class="profile__edit"><button type="button" class="profile__button"></div></button>
-        <p class="profile__subtitle">Исследователь океана</p>
-        <div class="profile__add"><button type="button" class="profile__button"></div></button>
-    </div> -->
-    <section class="profile">
-    <div class="profile__image"></div>
-    <div class="profile__grid">
-        <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <button type="button" class="profile__button"></button><div class="profile__edit"></div>
-        <p class="profile__subtitle">Исследователь океана</p>
-      </div>
-      <div class="profile__add"><button type="button" class="profile__button" id="open_pop_up" ></button></div>
-      <!-- <div class="pop_up">
-        <form></form>
-        <div class="pop_up__container">
-            <div class="pop_up__body"></div>
-        </div>
-      </div> -->
-    </section>
-    <section class="places">
-        <ul class="places__list">
-            <li class="places__item card">
-                <img class="card__image" src="./images/изображение_2022-10-28_145901747.png" alt="Карачаевск">
-                <div class="card__description">
-                <h2 class="card__title">Карачаевск</h2>
-                <button type="button" class="card__like-button"></button>
-            </div>
-            </li>
-            <li class="places__item card">
-                <img class="card__image" src="./images/изображение_2022-10-28_145917455.png" alt="Эльбрус">
-                <div class="card__description">
-                <h2 class="card__title">Гора Эльбрус</h2>
-                <button type="button" class="card__like-button"></button>
-            </div>
-            </li>
-            <li class="places__item card">
-                <img class="card__image" src="./images/изображение_2022-10-28_145926068.png"  alt="Домбай">
-                <div class="card__description">
-                <h2 class="card__title">Домбай</h2>
-                <button type="button" class="card__like-button"></button>
-            </div>
-            </li>
-            <li class="places__item card">
-                <img class="card__image" src="./images/изображение_2022-10-28_145930853.png" alt="Эльбрус">
-                <div class="card__description">
-                <h2 class="card__title">Гора Эльбрус</h2>
-                <button type="button" class="card__like-button"></button>
-            </div>
-            </li>
-            <li class="places__item card">
-                <img class="card__image" src="./images/изображение_2022-10-28_145935089.png" alt="Домбай">
-                <div class="card__description">
-                <h2 class="card__title">Домбай</h2>
-                <button type="button" class="card__like-button"></button>
-            </div>
-            </li>
-            <li class="places__item card">
-                <img class="card__image" src="./images/изображение_2022-10-28_145949498.png" alt="Карачаевск">
-                <div class="card__description">
-                <h2 class="card__title">Карачаево-Ч...</h2>
-                <button type="button" class="card__like-button"></button>
-            </div>
-            </li>
-        </ul>
-    </section>
-    <section class="popup">
-        <form action="#" class="popup__container">
-        <div class="popup__body">
-            <a class="popup__close"><img class="popup__exit" src="./images/exitPop_Up.svg" alt="Крестик"></a>
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <label class="popup__label">
-                <input id="EditName" class="popup__input" type="text" name="Name" value="Жак-Ив Кусто">
-                <!-- <div class="pop_up__line"></div> -->
-            </label>
-            <label class="popup__label">
-                <input id="EditJob" class="popup__input" type="text" name="Work" value="Исследователь океана">
-                <!-- <div class="pop_up__line"></div> -->
-            </label>
-            <button type="submit" class="popup__button">Сохранить</button>
-        </div>
-    </form>
-    </section>
-</main>
-    <footer class="footer">
-        <p class="footer__author">&copy; 2022 Левон Максудян</p>
-    </footer>
-</div>
-<script src="./main/main.js" ></script>
+    <script src="./scripts/script.js"></script>
 </body>
+
 </html>

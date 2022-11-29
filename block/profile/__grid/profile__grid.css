@@ -1,7 +1,0 @@
-.profile__grid{
-    display: grid;
-    grid-template-columns: minmax(auto, 355px) auto;
-    grid-template-areas: "title edit"
-    "subtitle subtitle"
-    "add add";
-}

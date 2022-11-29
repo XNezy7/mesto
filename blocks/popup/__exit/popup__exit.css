@@ -1,0 +1,8 @@
+.popup__exit {
+    position: absolute;
+    top: -40px;
+    left: 438px;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+}
