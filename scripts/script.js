@@ -17,6 +17,7 @@ function formSubmitHandler(evt) {
     nameTitle.textContent = nameInput.value;
     let jobsubtitle = document.querySelector(".profile__subtitle");
     jobsubtitle.textContent = jobInput.value;
+    formElement.style.display = "none";
 }
 
 formElement.addEventListener('submit', formSubmitHandler);

@@ -6,3 +6,13 @@
     height: 32px;
     z-index: 2;
 }
+
+
+@media screen and (max-width: 580px) {
+    .popup__exit {
+        width: 20px;
+        height: 20px;
+        bottom: 87px;
+        left: 261px;
+    }
+}

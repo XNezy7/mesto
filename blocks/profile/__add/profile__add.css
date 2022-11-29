@@ -1,4 +1,6 @@
 .profile__add {
+    all: unset;
+    background-color: black;
     margin: 35px 0 0 244px;
     width: 100%;
     max-width: 150px;
@@ -13,7 +15,7 @@
 
 @media screen and (max-width: 880px) {
     .profile__add {
-        margin: 35px auto 0;
+        margin: 36px 19px 0;
         width: 100%;
         max-width: 282px;
     }
