@@ -8,18 +8,17 @@
     <link rel="stylesheet" type="text/css" href="./pages/index.css">
 </head>
 
-<body>
+<body class="body">
     <div class="page">
         <header class="header">
             <div class="header__logo"></div>
-            <div class="header__line"></div>
         </header>
         <main>
             <section class="profile">
                 <div class="profile__image"></div>
                 <div class="profile__grid">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit"></button>
+                    <button type="edit" class="profile__edit"></button>
                     <p class="profile__subtitle">Исследователь океана</p>
                 </div>
                 <button type="button" class="profile__add" id="open_pop_up"></button>
@@ -70,22 +69,22 @@
                     </li>
                 </ul>
             </section>
-            <section class="popup popup_opened">
-                <form action="#" class="popup__container">
-                    <div class="popup__body">
-                        <a class="popup__close"><img class="popup__exit" src="./images/exitPop_Up.svg"
-                                alt="Крестик"></a>
+            <section class="popup">
+                    <form action="#" class="popup__form" name="form">
+                        <div class="popup__body">
+                        <button type="close__popup" class="popup__close"><img class="popup__exit" src="./images/exitPop_Up.svg"
+                                alt="Крестик"></button>
                         <h3 class="popup__title">Редактировать профиль</h3>
                         <label class="popup__label">
-                            <input id="EditName" class="popup__input" type="text" name="Name" value="Жак-Ив Кусто">
+                            <input id="Edit_type_name" class="popup__input" type="text" name="Name" value="Жак-Ив Кусто">
                         </label>
                         <label class="popup__label">
-                            <input id="EditJob" class="popup__input" type="text" name="Work"
+                            <input id="Edit_type_job" class="popup__input" type="text" name="Work"
                                 value="Исследователь океана">
                         </label>
                         <button type="submit" class="popup__button">Сохранить</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </section>
         </main>
         <footer class="footer">

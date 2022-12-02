@@ -1,5 +1,9 @@
 .popup__close{
+    all: unset;
     cursor: pointer;
+    position: absolute;
+    top: -40px;
+    left: 438px;
 }
 
 .popup__close:hover{
