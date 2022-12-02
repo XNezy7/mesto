@@ -7,14 +7,13 @@ let nameTitle = document.querySelector(".profile__title");
 let jobsubtitle = document.querySelector(".profile__subtitle");
 
 
-function openPupUp(evt) {
+function openPupUp() {
     formElement.classList.add("popup_active");
 }
 
-function closePupUp(evt) {
+function closePupUp() {
     formElement.classList.remove("popup_active");
 }
-
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
