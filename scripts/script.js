@@ -9,12 +9,10 @@ let jobsubtitle = document.querySelector(".profile__subtitle");
 
 function openPupUp(evt) {
     formElement.classList.add("popup_active");
-    // formElement.style.display = "block";
 }
 
 function closePupUp(evt) {
     formElement.classList.remove("popup_active");
-    // formElement.style.display = "none";
 }
 
 
