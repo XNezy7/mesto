@@ -6,14 +6,13 @@ let popUpClose = document.querySelector(".popup__close");
 let nameTitle = document.querySelector(".profile__title");
 let jobsubtitle = document.querySelector(".profile__subtitle");
 
-
+nameInput.value = nameTitle.textContent;
+jobInput.value = jobsubtitle.textContent;
 function openPupUp() {
-    nameInput.value = "Жак-Ив Кусто";
     formElement.classList.add("popup_active");
 }
 
 function closePupUp() {
-    jobInput.value = "Исследователь океана";
     formElement.classList.remove("popup_active");
 }
 
