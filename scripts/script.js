@@ -8,11 +8,12 @@ let jobsubtitle = document.querySelector(".profile__subtitle");
 
 
 function openPupUp() {
-    
+    nameInput.value = "Жак-Ив Кусто";
     formElement.classList.add("popup_active");
 }
 
 function closePupUp() {
+    jobInput.value = "Исследователь океана";
     formElement.classList.remove("popup_active");
 }
 
