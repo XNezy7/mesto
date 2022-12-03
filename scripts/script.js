@@ -8,6 +8,7 @@ let jobsubtitle = document.querySelector(".profile__subtitle");
 
 
 function openPupUp() {
+    
     formElement.classList.add("popup_active");
 }
 
@@ -19,7 +20,7 @@ function formSubmitHandler(evt) {
     evt.preventDefault();
     nameTitle.textContent = nameInput.value;
     jobsubtitle.textContent = jobInput.value;
-    closePupUp(evt);
+    closePupUp();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
