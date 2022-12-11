@@ -1,0 +1,15 @@
+.card__delete-photo{
+    all: unset;
+    background-image: url(../../../images/trash.svg);
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    width: 18px;
+    height: 19px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.card__delete-photo:hover{
+    opacity: .8;
+}

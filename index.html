@@ -24,51 +24,8 @@
       <button type="button" class="profile__add" id="open_pop_up"></button>
     </section>
     <section class="places">
-      <ul class="places__list">
-        <li class="places__item card">
-          <img class="card__image" src="./images/изображение_2022-10-28_145901747.png" alt="Карачаевск">
-          <div class="card__description">
-            <h2 class="card__title">Карачаевск</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </li>
-        <li class="places__item card">
-          <img class="card__image" src="./images/изображение_2022-10-28_145917455.png" alt="Эльбрус">
-          <div class="card__description">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </li>
-        <li class="places__item card">
-          <img class="card__image" src="./images/изображение_2022-10-28_145926068.png" alt="Домбай">
-          <div class="card__description">
-            <h2 class="card__title">Домбай</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </li>
-                    <li class="places__item card">
-          <img class="card__image" src="./images/изображение_2022-10-28_145930853.png" alt="Эльбрус">
-          <div class="card__description">
-            <h2 class="card__title">Гора Эльбрус</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </li>
-        <li class="places__item card">
-          <img class="card__image" src="./images/изображение_2022-10-28_145935089.png" alt="Домбай">
-          <div class="card__description">
-            <h2 class="card__title">Домбай</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </li>
-        <li class="places__item card">
-          <img class="card__image" src="./images/изображение_2022-10-28_145949498.png" alt="Карачаевск">
-          <div class="card__description">
-            <h2 class="card__title">Карачаево-Ч...</h2>
-            <button type="button" class="card__like-button"></button>
-          </div>
-        </li>
-      </ul>
-        </section>
+      <ul class="places__list"></ul>
+    </section>
         <section class="popup">
           <form action="#" class="popup__form" name="form">
             <div class="popup__body">
@@ -82,6 +39,23 @@
               <label class="popup__label">
                             <input id="Edit_type_job" class="popup__input" type="text" name="Work"
                                 value="Исследователь океана">
+              </label>
+              <button type="submit" class="popup__button">Сохранить</button>
+            </div>
+            </form> 
+        </section>
+        <section class="popup" id="cardPopup">
+          <form action="#" class="popup__form" name="form">
+            <div class="popup__body">
+              <button type="button" id="closeCardButton" class="popup__close"><img class="popup__exit" src="./images/exitPop_Up.svg" alt="Крестик"></button>
+              <h3 class="popup__title">Новое место</h3>
+              <label class="popup__label">
+                <input id="Edit_type_name_place" class="popup__input" 
+                type="text" name="Name" value="Название">
+              </label>
+              <label class="popup__label">
+                <input id="Edit_type_id" class="popup__input" 
+                type="text" name="Work" value="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg">
               </label>
               <button type="submit" class="popup__button">Сохранить</button>
             </div>
