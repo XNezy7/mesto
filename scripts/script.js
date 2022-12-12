@@ -8,13 +8,15 @@ let jobsubtitle = document.querySelector(".profile__subtitle");
 let placesList = document.querySelector(".places__list");
 let cardFormElement = document.querySelector("#cardPopup");
 let addCardButton = document.querySelector('#open_pop_up');
-let closeCardButton = document.querySelector('#closeCardButton')
+let expandForm = document.querySelector('#photoPopup');
+let expandFormImg = document.querySelector('#expandPhoto');
+let expandFormTitle = document.querySelector('#expandTitle');
+let closeExpandForm = document.querySelector('#closePhoto');
 
 const initialCards = [
     {
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-        // img.src = document.createElement("")
     },
     {
         name: 'Челябинская область',
@@ -52,6 +54,8 @@ function createCard(initialCard) {
     img.classList.add("card__image");
     li.classList.add("places__item", "card");
     deleteButton.classList.add("card__delete-photo");
+
+    img.addEventListener('click', expandPhoto);
 
     likeButton.attributes.type = "button";
     likeButton.addEventListener('click', like);
@@ -118,9 +122,20 @@ function cardFormSubmit(evt) {
     closeCard();
 }
 
+function expandPhoto(evt) {
+    expandForm.classList.add('popup_active');
+    expandFormImg.src = evt.target.src;
+    expandFormTitle.textContent = evt.target.alt;
+}
+
+function closeExpandPhoto() {
+    expandForm.classList.remove('popup_active');
+}
+
 formElement.addEventListener('submit', formSubmitHandler);
 profileButton.addEventListener('click', openPupUp);
 addCardButton.addEventListener('click', openCardPupUp);
 cardFormElement.addEventListener('submit', cardFormSubmit);
 popUpClose.addEventListener('click', closePupUp);
-closeCardButton.addEventListener('click', closeCard)
+closeCardButton.addEventListener('click', closeCard);
+closeExpandForm.addEventListener('click', closeExpandPhoto);

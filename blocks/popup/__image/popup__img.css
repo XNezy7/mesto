@@ -1,0 +1,13 @@
+.popup__image{
+    width: 433px;
+    height: 540px;
+    background-image: url(../../../images/изображение_2022-10-28_145901747.png);
+    background-size: contain;
+}
+
+@media screen and (max-width: 580px) {
+    .popup__image{
+        width: 240px;
+        height: 299px;
+    }
+}
