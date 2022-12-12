@@ -1,4 +1,4 @@
-.popup__close_photo{
+.popup__close__photo{
     all: unset;
     cursor: pointer;
     position: absolute;
@@ -6,12 +6,12 @@
     left: 441px;
 }
 
-.popup__close_photo:hover{
+.popup__close__photo:hover{
     opacity: .6;
 }
 
 @media screen and (max-width: 580px) {
-    .popup__close_photo{
+    .popup__close__photo{
         top: -36px;
         left: 261px;
     }
