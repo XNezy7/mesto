@@ -24,7 +24,18 @@
       <button type="button" class="profile__add" id="open_pop_up"></button>
     </section>
     <section class="places">
-      <ul class="places__list" id="places_list"></ul>
+      <ul class="places__list" id="places_list">
+        <template id="places">
+        <li class="places__item card" id="places_item"> 
+          <img class="card__image" id="card_image"> 
+          <button type="button" class="card__delete-photo" id="card__delete-photo"></button>
+          <div class="card__description" id="card_description"> 
+            <h2 class="card__title" id="card_title"></h2> 
+            <button type="button" class="card__like-button" id="card__like-button"></button> 
+          </div> 
+        </li> 
+      </template>
+      </ul>
     </section>
         <section class="popup" id="popup">
           <form action="#" class="popup__form" name="form">

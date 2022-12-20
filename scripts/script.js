@@ -12,7 +12,7 @@ const expandForm = document.querySelector('#photoPopup');
 const expandFormImg = document.querySelector('#expandPhoto');
 const expandFormTitle = document.querySelector('#expandTitle');
 const closeExpandForm = document.querySelector('#closePhoto');
-
+const placesTemplate = document.querySelector('#places').content; 
 const initialCards = [
     {
         name: 'Архыз',
@@ -40,42 +40,24 @@ const initialCards = [
     }
 ];
 
-function createCard(initialCard) {
-    const li = document.createElement("li");
-    const img = document.createElement("img");
-    const div = document.createElement("div");
-    const h2 = document.createElement("h2");
-    const likeButton = document.createElement("button");
-    const deleteButton = document.createElement("button");
-
-    div.classList.add("card__description");
-    h2.classList.add("card__title");
-    likeButton.classList.add("card__like-button");
-    img.classList.add("card__image");
-    li.classList.add("places__item", "card");
-    deleteButton.classList.add("card__delete-photo");
-
-    img.addEventListener('click', expandPhotoButton);
-
-    likeButton.attributes.type = "button";
+function createCard(title, imageLink) {
+    const userElement = placesTemplate.cloneNode(true);
+    const image = userElement.querySelector("#card_image");
+    const name = userElement.querySelector("#card_title");
+    const likeButton = userElement.querySelector("#card__like-button");
+    const deleteButton = userElement.querySelector("#card__delete-photo");
+    image.src = imageLink;
+    name.textContent = title;
     likeButton.addEventListener('click', cardLikeButton);
-
-    deleteButton.attributes.type = "button";
     deleteButton.addEventListener('click', removeCard);
-
-    h2.textContent = initialCard.name;
-    img.src = initialCard.link;
-    img.alt = initialCard.name;
-    
-    div.appendChild(h2);
-    div.appendChild(likeButton);
-    li.appendChild(deleteButton);
-    li.appendChild(img);
-    li.appendChild(div);
-    placesList.prepend(li);
+    return userElement;
 }
+    initialCards.reverse().forEach(addCard);
 
-initialCards.forEach(createCard)
+function addCard(initialCard) {
+    const newCard = createCard(initialCard.name, initialCard.link);
+    placesList.append(newCard);
+}
 
 
 function removeCard(evt) {
@@ -84,7 +66,6 @@ function removeCard(evt) {
 
 function openPupUp(popup) {
     popup.classList.add("popup_active");
-    
 }
 
 function closePupUp(popup) {
