@@ -44,6 +44,7 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
 function createCard(title, imageLink) {
     const cardElement = placesTemplate.cloneNode(true);
     const image = cardElement.querySelector("#card_image");
@@ -58,11 +59,12 @@ function createCard(title, imageLink) {
     deleteButton.addEventListener('click', removeCard);
     return cardElement;
 }
+
     initialCards.reverse().forEach(addCard);
 
 function addCard(initialCard) {
     const newCard = createCard(initialCard.name, initialCard.link);
-    placesList.append(newCard);
+    placesList.prepend(newCard);
 }
 
 
