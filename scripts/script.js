@@ -14,7 +14,6 @@ const expandFormTitle = document.querySelector('#expand_title');
 const buttonCloseImagePopup = document.querySelector('#close-photo');
 const placesTemplate = document.querySelector('#places').content; 
 const buttonCloseAddCardPopup = document.querySelector('#close_card-button');
-
 const nameEl = document.querySelector("#input_user-place");
 const linkEl = document.querySelector("#input_link-photo");
 
@@ -67,18 +66,40 @@ function addCard(initialCard) {
     placesList.prepend(newCard);
 }
 
-
 function removeCard(evt) {
     evt.target.parentElement.remove()
 }
 
+function closeByClick(evt){
+    const popupBody =  document.querySelector('.popup__body');
+    const clickInsideForm = evt.composedPath().includes(popupBody)
+
+    if(!clickInsideForm){
+        const popupEl = document.querySelector('.popup_active')
+        closePopup(popupEl);
+    }
+}
+
+
+function closeByEsc(evt){
+    if (evt.key === 'Escape'){
+        const openedPopup = document.querySelector('.popup_active');
+        closePopup(openedPopup);
+    } 
+}
+
 function openPopup(popup) {
     popup.classList.add("popup_active");
+    document.addEventListener('keydown', closeByEsc);
+    popup.addEventListener('click', closeByClick);
 }
 
 function closePopup(popup) {
     popup.classList.remove("popup_active");
+    document.removeEventListener('keydown', closeByEsc);
+    popup.removeEventListener('click', closeByClick);
 }
+
 
 function cardLikeButton(evt) {
     const button = evt.target;

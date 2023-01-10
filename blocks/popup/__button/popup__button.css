@@ -13,6 +13,7 @@
     align-items: center;
     margin: 18px 36px 0;
     cursor: pointer;
+    display: block;
 }
 
 

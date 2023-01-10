@@ -1,9 +1,9 @@
 .popup__input {
     padding: 0;
     display: flex;
-    margin: 0 0 30px 36px;
+    margin: 0 auto 0;
     width: 358px;
-    height: 27px;
+    height: 20px;
     border: none;
     opacity: 1;
     border-bottom: 1px solid rgba(0, 0, 0, .2);

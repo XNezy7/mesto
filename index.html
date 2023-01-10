@@ -38,35 +38,39 @@
       </ul>
     </section>
         <section class="popup" id="popup">
-          <form action="#" class="popup__form" name="form">
+          <form action="#" class="popup__form" name="form" novalidate>
             <div class="popup__body">
               <button type="button" class="popup__close" id="popup_close"><img class="popup__exit"
                                 src="./images/exitPop_Up.svg" alt="Крестик"></button>
               <h3 class="popup__title">Редактировать профиль</h3>
               <label class="popup__label">
                             <input id="input_user-name" class="popup__input" type="text" name="Name"
-                                value="Жак-Ив Кусто" placeholder="Имя">
+                                value="Жак-Ив Кусто" placeholder="Имя" minlength="2" maxlength="40" required>
+                                <span class="input_user-name-error popup__error"></span>
               </label>
               <label class="popup__label">
                             <input id="input_user-job" class="popup__input" type="text" name="Work"
-                                value="Исследователь океана" placeholder="Вид деятельности">
+                                value="Исследователь океана" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
+                                <span class="input_user-job-error popup__error"></span>
               </label>
               <button type="submit" class="popup__button">Сохранить</button>
             </div>
             </form> 
         </section>
         <section class="popup" id="card_popup">
-          <form action="#" class="popup__form" name="form">
+          <form action="#" class="popup__form" name="form" novalidate>
             <div class="popup__body">
               <button type="button" id="close_card-button" class="popup__close"><img class="popup__exit" src="./images/exitPop_Up.svg" alt="Крестик"></button>
               <h3 class="popup__title">Новое место</h3>
               <label class="popup__label">
                 <input id="input_user-place" class="popup__input" 
-                type="text" name="place" placeholder="Название места">
+                type="text" name="place" placeholder="Название места" minlength="2" maxlength="30" required>
+                <span class="input_user-place-error popup__error"></span>
               </label>
               <label class="popup__label">
                 <input id="input_link-photo" class="popup__input" 
-                type="text" name="photo" placeholder="Ссылка">
+                type="url" name="photo" placeholder="Ссылка" required>
+                <span class="input_link-photo-error popup__error"></span>
               </label>
               <button type="submit" class="popup__button">Сохранить</button>
             </div>
@@ -87,6 +91,7 @@
   </footer>
   </div>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
