@@ -72,10 +72,10 @@ function removeCard(evt) {
 
 function closeByClick(evt){
     const popupBody =  document.querySelector('.popup__body');
-    const clickInsideForm = evt.composedPath().includes(popupBody)
+    const clickInsideForm = evt.composedPath().includes(popupBody);
 
     if(!clickInsideForm){
-        const popupEl = document.querySelector('.popup_active')
+        const popupEl = document.querySelector('.popup_active');
         closePopup(popupEl);
     }
 }

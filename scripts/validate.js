@@ -1,8 +1,8 @@
 const form = document.querySelector('.popup__form');
-const userNameInput = document.querySelector('#input_user-name');
-const userJobInput = document.querySelector('#input_user-job');
-const userPlaceInput = document.querySelector('#input_user-place');
-const userLinkInput = document.querySelector('#input_link-photo');
+const userNameInput = document.querySelector('#name');
+const userJobInput = document.querySelector('#job');
+const userPlaceInput = document.querySelector('#place');
+const userLinkInput = document.querySelector('#photo');
 
 
 enableValidation({
