@@ -87,13 +87,13 @@ function closeByEsc(evt) {
 function openPopup(popup) {
   popup.classList.add("popup_active");
   document.addEventListener("keydown", closeByEsc);
-  document.addEventListener("mousedown", closeByClick);
+  popup.addEventListener("mousedown", closeByClick);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_active");
   document.removeEventListener("keydown", closeByEsc);
-  document.removeEventListener("mousedown", closeByClick);
+  popup.removeEventListener("mousedown", closeByClick);
 }
 
 function handleLikeClick(evt) {
