@@ -1,6 +1,6 @@
 const formEditProfile = document.querySelector("#popup");
-const nameInput = document.querySelector("#input_user-name");
-const jobInput = document.querySelector("#input_user-job");
+const nameInput = document.querySelector("#name");
+const jobInput = document.querySelector("#job");
 const profileButton = document.querySelector("#profile_edit");
 const buttonCloseEditProfilePopup = document.querySelector("#popup_close");
 const nameTitle = document.querySelector("#profile_title");
@@ -12,10 +12,10 @@ const expandForm = document.querySelector('#photo_popup');
 const expandFormImg = document.querySelector('#expand_photo');
 const expandFormTitle = document.querySelector('#expand_title');
 const buttonCloseImagePopup = document.querySelector('#close-photo');
-const placesTemplate = document.querySelector('#places').content; 
+const placesTemplate = document.querySelector('#places').content;
 const buttonCloseAddCardPopup = document.querySelector('#close_card-button');
-const nameEl = document.querySelector("#input_user-place");
-const linkEl = document.querySelector("#input_link-photo");
+const nameEl = document.querySelector("#place");
+const linkEl = document.querySelector("#photo");
 
 const initialCards = [
     {
@@ -49,7 +49,7 @@ function createCard(title, imageLink) {
     const image = cardElement.querySelector("#card_image");
     const name = cardElement.querySelector("#card_title");
     const likeButton = cardElement.querySelector("#card__like-button");
-    const deleteButton = cardElement.querySelector("#card__delete-photo");  
+    const deleteButton = cardElement.querySelector("#card__delete-photo");
     image.src = imageLink;
     image.alt = title;
     name.textContent = title;
@@ -70,35 +70,32 @@ function removeCard(evt) {
     evt.target.parentElement.remove()
 }
 
-function closeByClick(evt){
-    const popupBody =  document.querySelector('.popup__body');
-    const clickInsideForm = evt.composedPath().includes(popupBody);
-
-    if(!clickInsideForm){
-        const popupEl = document.querySelector('.popup_active');
-        closePopup(popupEl);
+function closeByClick(evt) {
+    if (evt.target.classList.contains('popup__form')) {
+      const openedPopup = document.querySelector('.popup_active');
+      closePopup(openedPopup);
     }
-}
-
+  }
 
 function closeByEsc(evt){
     if (evt.key === 'Escape'){
         const openedPopup = document.querySelector('.popup_active');
         closePopup(openedPopup);
-    } 
+    }
 }
 
 function openPopup(popup) {
     popup.classList.add("popup_active");
     document.addEventListener('keydown', closeByEsc);
-    popup.addEventListener('click', closeByClick);
+    document.addEventListener('mousedown', closeByClick);
 }
 
 function closePopup(popup) {
     popup.classList.remove("popup_active");
     document.removeEventListener('keydown', closeByEsc);
-    popup.removeEventListener('click', closeByClick);
+    document.removeEventListener('mousedown', closeByClick);
 }
+
 
 
 function cardLikeButton(evt) {
