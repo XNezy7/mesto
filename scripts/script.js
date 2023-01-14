@@ -16,7 +16,9 @@ const placesTemplate = document.querySelector("#places").content;
 const buttonCloseAddCardPopup = document.querySelector("#close_card-button");
 const nameEl = document.querySelector("#place");
 const linkEl = document.querySelector("#photo");
-
+const submitCardForm = cardFormElement.querySelector('.popup__button');
+const inputsCardForm = Array.from(cardFormElement.querySelectorAll('.popup__input'));
+const cardForm = cardFormElement.querySelector('.popup__form');
 const initialCards = [
   {
     name: "Архыз",
@@ -67,13 +69,12 @@ function addCard(initialCard) {
 }
 
 function removeCard(evt) {
-  evt.target.parentElement.remove();
+  evt.target.closest("#places_item").remove();
 }
 
 function closeByClick(evt) {
-  if (evt.target.classList.contains("popup__form")) {
-    const openedPopup = document.querySelector(".popup_active");
-    closePopup(openedPopup);
+  if (evt.target.classList.contains("popup_active")) {
+    closePopup(evt.target);
   }
 }
 
@@ -116,6 +117,7 @@ function handleCardFormSubmit(evt) {
   evt.preventDefault();
   addCard({ name: nameEl.value, link: linkEl.value });
   closePopup(cardFormElement);
+  evt.target.reset();
 }
 
 function openImagePopup(evt) {
@@ -130,15 +132,22 @@ cardFormElement.addEventListener("submit", handleCardFormSubmit);
 profileButton.addEventListener("click", () => {
   openPopup(formEditProfile);
 });
-buttonAddCard.addEventListener("click", () => {
+
+buttonAddCard.addEventListener("click", () => { 
+  cardForm.reset();
   openPopup(cardFormElement);
+  toggleButtonState(inputsCardForm, submitCardForm, configValidation);
 });
+
 buttonCloseEditProfilePopup.addEventListener("click", () => {
   closePopup(formEditProfile);
 });
+
 buttonCloseAddCardPopup.addEventListener("click", () => {
   closePopup(cardFormElement);
 });
+
 buttonCloseImagePopup.addEventListener("click", () => {
   closePopup(photoExpand);
 });
+enableValidation(configValidation);

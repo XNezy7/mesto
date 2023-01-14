@@ -3,16 +3,18 @@
     cursor: pointer;
     position: absolute;
     top: -40px;
-    left: 438px;
+    right: -40px;
 }
 
 .popup__close:hover{
     opacity: .6;
 }
 
+
 @media screen and (max-width: 580px) {
-    .popup__close{
-        top: -36px;
-        left: 261px;
+    .popup__close {
+        position: absolute;
+        top: -28px;
+        right: 0px;
     }
 }

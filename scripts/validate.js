@@ -1,10 +1,9 @@
-const form = document.querySelector(".popup__form");
 const userNameInput = document.querySelector("#name");
 const userJobInput = document.querySelector("#job");
 const userPlaceInput = document.querySelector("#place");
 const userLinkInput = document.querySelector("#photo");
 
-enableValidation({
+const configValidation = ({
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -74,10 +73,9 @@ function setEventListeners(formElement, config) {
   });
 }
 
-function enableValidation(config) {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-
+function enableValidation({formSelector, ...restconfig}) {
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
-    setEventListeners(formElement, config);
+    setEventListeners(formElement, restconfig);
   });
 }
