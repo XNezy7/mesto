@@ -1,4 +1,6 @@
-import { Card, placesTemplate } from "./Card.js";
+import { Card } from "./Card.js";
+
+import FormValidator from "./FormValidator.js";
 
 const formEditProfile = document.querySelector("#profile_popup");
 const nameInput = document.querySelector("#name");
@@ -12,11 +14,54 @@ const buttonAddCard = document.querySelector("#open_pop_up");
 const buttonCloseAddCardPopup = document.querySelector("#close_card-button");
 const nameEl = document.querySelector("#place");
 const linkEl = document.querySelector("#photo");
+const placesTemplate = document.querySelector("#places").content;
+const cardsContainer = document.querySelector("#places_list");
+export const photoExpand = document.querySelector("#photo_popup");
+const buttonCloseImagePopup = document.querySelector("#close-photo");
 const submitCardForm = cardFormElement.querySelector(".popup__button");
-const inputsCardForm = Array.from(
+export const inputsCardForm = Array.from(         
   cardFormElement.querySelectorAll(".popup__input")
 );
-const cardForm = cardFormElement.querySelector(".popup__form");
+const cardForm = document.querySelector(".popup__form_card");
+const profileForm = document.querySelector(".popup__form_profile");
+
+const configValidation = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const initialCards = [
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
+
+initialCards.reverse().forEach((card) => addCard(card));
 
 function closeByClick(evt) {
   if (evt.target.classList.contains("popup_active")) {
@@ -29,6 +74,11 @@ function closeByEsc(evt) {
     const openedPopup = document.querySelector(".popup_active");
     closePopup(openedPopup);
   }
+}
+
+function addCard(card) {
+  const newCard = new Card(card.name, card.link, placesTemplate).createCard();
+  cardsContainer.prepend(newCard);
 }
 
 export function openPopup(popup) {
@@ -52,14 +102,17 @@ function handleProfileFormSubmit(evt) {
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  new Card(nameEl.value, linkEl.value, placesTemplate);
+  addCard({ name: nameEl.value, link: linkEl.value });
   closePopup(cardFormElement);
   evt.target.reset();
 }
 
 cardFormElement.addEventListener("submit", handleCardFormSubmit);
 formEditProfile.addEventListener("submit", handleProfileFormSubmit);
+
 profileButton.addEventListener("click", () => {
+  nameInput.value = nameTitle.textContent;
+  jobInput.value = jobSubtitle.textContent;
   openPopup(formEditProfile);
 });
 
@@ -75,3 +128,11 @@ buttonCloseEditProfilePopup.addEventListener("click", () => {
 buttonCloseAddCardPopup.addEventListener("click", () => {
   closePopup(cardFormElement);
 });
+buttonCloseImagePopup.addEventListener("click", () => {
+  closePopup(photoExpand);
+});
+
+const formCard = new FormValidator(configValidation, cardForm);
+formCard.enableValidation();
+const formProfile = new FormValidator(configValidation, profileForm);
+formProfile.enableValidation();

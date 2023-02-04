@@ -38,18 +38,18 @@
         </ul>
       </section>
       <section class="popup" id="profile_popup">
-        <form action="#" class="popup__form" name="form" novalidate>
+        <form action="#" class="popup__form popup__form_profile" name="form" novalidate>
           <div class="popup__body">
             <button type="button" class="popup__close" id="popup_close"><img class="popup__exit"
                 src="./images/exitPop_Up.svg" alt="Крестик"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <label class="popup__label">
-              <input id="name" class="popup__input" type="text" name="Name" value="Жак-Ив Кусто" placeholder="Имя"
+              <input id="name" class="popup__input" type="text" name="Name" placeholder="Имя"
                 minlength="2" maxlength="40" required>
               <span class="name-error popup__error"></span>
             </label>
             <label class="popup__label">
-              <input id="job" class="popup__input" type="text" name="Work" value="Исследователь океана"
+              <input id="job" class="popup__input" type="text" name="Work"
                 placeholder="Вид деятельности" minlength="2" maxlength="200" required>
               <span class="job-error popup__error"></span>
             </label>
@@ -58,7 +58,7 @@
         </form>
       </section>
       <section class="popup" id="card_popup">
-        <form action="#" class="popup__form" name="form" novalidate>
+        <form action="#" class="popup__form popup__form_card" name="form" novalidate>
           <div class="popup__body">
             <button type="button" id="close_card-button" class="popup__close"><img class="popup__exit"
                 src="./images/exitPop_Up.svg" alt="Крестик"></button>
@@ -89,9 +89,9 @@
       <p class="footer__author">&copy; 2022 Левон Максудян</p>
     </footer>
   </div>
+  <script src="./scripts/index.js" type="module"></script>
   <script src="./scripts/Card.js" type="module"></script>
   <script src="./scripts/FormValidator.js" type="module"></script>
-  <script src="./scripts/index.js" type="module"></script>
 </body>
 
 </html>
