@@ -63,8 +63,6 @@ const initialCards = [
 
 initialCards.reverse().forEach((item) =>{
   addCard(createCard(item));
-  // addCard(card);
-  // createCard(item);
 });
 
 function closeByClick(evt) {
@@ -126,9 +124,9 @@ profileButton.addEventListener("click", () => {
 });
 
 buttonAddCard.addEventListener("click", () => {
-  formCard.enableValidation();
   cardForm.reset();
   openPopup(cardFormElement);
+  formCard.toggleButtonState();
 });
 
 buttonCloseEditProfilePopup.addEventListener("click", () => {
@@ -138,6 +136,7 @@ buttonCloseEditProfilePopup.addEventListener("click", () => {
 buttonCloseAddCardPopup.addEventListener("click", () => {
   closePopup(cardFormElement);
 });
+
 buttonCloseImagePopup.addEventListener("click", () => {
   closePopup(photoExpand);
 });
