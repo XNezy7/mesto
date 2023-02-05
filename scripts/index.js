@@ -61,7 +61,11 @@ const initialCards = [
   },
 ];
 
-initialCards.reverse().forEach((card) => addCard(card));
+initialCards.reverse().forEach((item) =>{
+  addCard(createCard(item));
+  // addCard(card);
+  // createCard(item);
+});
 
 function closeByClick(evt) {
   if (evt.target.classList.contains("popup_active")) {
@@ -76,9 +80,13 @@ function closeByEsc(evt) {
   }
 }
 
-function addCard(card) {
-  const newCard = new Card(card.name, card.link, placesTemplate).createCard();
+function addCard(newCard) {
   cardsContainer.prepend(newCard);
+}
+
+function createCard(item) {
+  const newCard = new Card(item.name, item.link, placesTemplate).createCard();
+  return newCard;
 }
 
 export function openPopup(popup) {
@@ -102,7 +110,8 @@ function handleProfileFormSubmit(evt) {
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  addCard({ name: nameEl.value, link: linkEl.value });
+  const item = ({ name: nameEl.value, link: linkEl.value });
+  addCard(createCard(item))
   closePopup(cardFormElement);
   evt.target.reset();
 }
@@ -117,6 +126,7 @@ profileButton.addEventListener("click", () => {
 });
 
 buttonAddCard.addEventListener("click", () => {
+  formCard.enableValidation();
   cardForm.reset();
   openPopup(cardFormElement);
 });
