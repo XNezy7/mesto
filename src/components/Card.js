@@ -32,6 +32,7 @@ export default class Card {
     popup.open(evt.target.alt, evt.target.src);
   }
 
+  
   _handleLikeClick(evt) {
     const button = evt.target;
     if (button.classList.contains("card__like-button_black")) {
