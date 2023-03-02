@@ -19,8 +19,7 @@
   },
   "homepage": "https://github.com/XNezy7/mesto#readme",
   "dependencies": {
-    "core-js": "^3.27.2",
-    "jquery": "^3.6.3"
+    "core-js": "^3.27.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

@@ -86,15 +86,16 @@ const userInfo = new UserInfo({
   job: "#profile_subtitle"
 });
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+function handleProfileFormSubmit(value) {
+  console.log(value)
+  // evt.preventDefault();
   userInfo.setUserInfo({name:nameInput.value, job:jobInput.value})
   profilePopup.close();
 }
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const item = { name: nameEl.value, link: linkEl.value };
+  const item = {name:nameEl.value, link: linkEl.value};
   createCard(item);
   cardPopup.close();
   evt.target.reset();
