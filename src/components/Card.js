@@ -1,35 +1,32 @@
-// import {openPopup, photoExpand} from "../pages/index.js";
-import PopupWithImage from "./PopupWithImage.js";                     
-
 export default class Card {
-  constructor(title, imageLink, template) {
+  constructor(title, imageLink, template, callback) {
     this.title = title;
     this.link = imageLink;
     this.template = template;
+    this._callback = callback;
   }
 
   createCard() {
-    const cardElement = this.template.cloneNode(true);
-    const image = cardElement.querySelector("#card_image");
-    const name = cardElement.querySelector("#card_title");
-    const likeButton = cardElement.querySelector("#card__like-button");
-    const deleteButton = cardElement.querySelector("#card__delete-photo");
-    image.src = this.link;
-    image.alt = this.title;
-    name.textContent = this.title;
-    this._addEventListeners(image, likeButton, deleteButton);
-    return cardElement;
+    this.cardElement = this.template.cloneNode(true);
+    this.image = this.cardElement.querySelector("#card_image");
+    this.name = this.cardElement.querySelector("#card_title");
+    this.likeButton = this.cardElement.querySelector("#card__like-button");
+    this.deleteButton = this.cardElement.querySelector("#card__delete-photo");
+    this.image.src = this.link;
+    this.image.alt = this.title;
+    this.name.textContent = this.title;
+    this._addEventListeners(this.image, this.likeButton, this.deleteButton);
+    return this.cardElement;
   }
 
-  _addEventListeners(image, likeButton, deleteButton) {
-    image.addEventListener("click", this._openImagePopup);
-    likeButton.addEventListener("click", this._handleLikeClick);
-    deleteButton.addEventListener("click", this._removeCard);
+  _addEventListeners() {
+    this.image.addEventListener("click", () => this._openImagePopup());
+    this.likeButton.addEventListener("click", this._handleLikeClick);
+    this.deleteButton.addEventListener("click", this._removeCard);
   }
 
-  _openImagePopup(evt) {
-    const popup = new PopupWithImage('#photo_popup');
-    popup.open(evt.target.alt, evt.target.src);
+  _openImagePopup() {
+    this._callback(this.link, this.title);
   }
 
   

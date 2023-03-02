@@ -1,25 +1,18 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup";
-import "./index.css";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import "./index.css";
 
-const formEditProfile = document.querySelector("#profile_popup");
 const nameInput = document.querySelector("#name");
 const jobInput = document.querySelector("#job");
 const profileButton = document.querySelector("#profile_edit");
-const nameTitle = document.querySelector("#profile_title");
-const jobSubtitle = document.querySelector("#profile_subtitle");
 const cardFormElement = document.querySelector("#card_popup");
 const buttonAddCard = document.querySelector("#open_pop_up");
-const nameEl = document.querySelector("#place");
-const linkEl = document.querySelector("#photo");
 const placesTemplate = document.querySelector("#places").content;
-const cardsContainer = document.querySelector("#places_list");
 export const photoExpand = document.querySelector("#photo_popup");
-const submitCardForm = cardFormElement.querySelector(".popup__button");
 export const inputsCardForm = Array.from(
   cardFormElement.querySelectorAll(".popup__input")
 );
@@ -60,26 +53,31 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
+function openImagePopup(alt, src){
+  photoPopup.open(src, alt);
+}
 
-// function closeByClick(evt) {
-//   if (evt.target.classList.contains("popup_active")) {
-//     closePopup(evt.target);
-//   }
-// }
-
-function createCard(item) {
-  const newCard = new Card(item.name, item.link, placesTemplate).createCard();
+function addCard(item){
+  const newCard = createCard(item);
   container.addItem(newCard);
 }
 
+function createCard(item) {
+  return new Card(item.name, item.link, placesTemplate, openImagePopup).createCard();
+}
+
 const container = new Section(
-  { items: initialCards, renderer: createCard },
+  { items: initialCards, renderer: addCard },
   "#places_list"
 );
 container.renderer();
 
 const cardPopup = new PopupWithForm("#card_popup", handleCardFormSubmit);
+cardPopup.setEventListeners();
 const profilePopup = new PopupWithForm("#profile_popup", handleProfileFormSubmit);
+profilePopup.setEventListeners();
+const photoPopup = new PopupWithImage('#photo_popup');
+photoPopup.setEventListeners();
 
 const userInfo = new UserInfo({
   name: "#profile_title",
@@ -87,18 +85,14 @@ const userInfo = new UserInfo({
 });
 
 function handleProfileFormSubmit(value) {
-  console.log(value)
-  // evt.preventDefault();
-  userInfo.setUserInfo({name:nameInput.value, job:jobInput.value})
+  userInfo.setUserInfo({name:value.Name, job:value.Work})
   profilePopup.close();
 }
 
-function handleCardFormSubmit(evt) {
-  evt.preventDefault();
-  const item = {name:nameEl.value, link: linkEl.value};
-  createCard(item);
+function handleCardFormSubmit(value) {
+  const item = {name:value.place, link: value.photo};
+  addCard(item);
   cardPopup.close();
-  evt.target.reset();
 }
 
 profileButton.addEventListener("click", () => {
