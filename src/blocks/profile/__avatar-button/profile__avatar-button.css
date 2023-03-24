@@ -1,0 +1,20 @@
+.profile__avatar-button {
+    position: relative;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  
+  .profile__avatar-button::before {
+    content: url(../../../images/vector.svg);
+    background-color: rgba(0, 0, 0, .8);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }

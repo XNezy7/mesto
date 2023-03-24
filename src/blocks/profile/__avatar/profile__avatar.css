@@ -1,0 +1,15 @@
+.profile__avatar {
+    /* background-image: url(../../../images/изображение_2022-10-28_145957116.png); */
+	min-width: 120px;
+	min-height: 120px;
+    background-size: cover;
+	border-radius: 50%;
+	margin: 0;
+}
+
+@media screen and (max-width: 880px) {
+    .profile__avatar {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

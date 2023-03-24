@@ -15,7 +15,11 @@
     </header>
     <main>
       <section class="profile">
-        <div class="profile__image"></div>
+        <div class="profile__avatar-outside">
+          <button class="profile__avatar-button" type="button" alt="Изменить аватар">
+            <img class="profile__avatar" src="#" alt="аватар" />
+          </button>
+        </div>
         <div class="profile__grid">
           <h1 class="profile__title" id="profile_title">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit" id="profile_edit"></button>
@@ -25,13 +29,24 @@
       </section>
       <section class="places">
         <ul class="places__list" id="places_list">
-          <template id="places">
+          <template id="placesWithTrash">
             <li class="places__item card" id="places_item">
               <img class="card__image" id="card_image">
               <button type="button" class="card__delete-photo" id="card__delete-photo"></button>
               <div class="card__description" id="card_description">
                 <h2 class="card__title" id="card_title"></h2>
                 <button type="button" class="card__like-button" id="card__like-button"></button>
+                <span class="card__like-count">0</span>
+              </div>
+            </li>
+          </template>
+          <template id="placesWithOutTrash">
+            <li class="places__item card" id="places_item">
+              <img class="card__image" id="card_image">
+              <div class="card__description" id="card_description">
+                <h2 class="card__title" id="card_title"></h2>
+                <button type="button" class="card__like-button" id="card__like-button"></button>
+                <span class="card__like-count">0</span>
               </div>
             </li>
           </template>
@@ -80,6 +95,26 @@
           <img class="popup__image" id="expand_photo">
           <h2 class="popup__subtitle" id="expand_title"></h2>
         </div>
+      </section>
+      <section class="popup" id="popup_delete">
+        <div class="popup__delete-body">
+          <button type="button" id="close-photo" class="popup__close"></button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button class="popup__button" type="submit">Да</button>
+        </div>
+      </section>
+      <section class="popup" id="popup_avatar">
+        <form action="#" class="popup__form popup__form_avatar" name="form" novalidate>
+        <div class="popup__body">
+          <button type="button" id="close-photo" class="popup__close"></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <label class="popup__label">
+            <input id="photo" class="popup__input" type="url" name="photo" placeholder="Ссылка" required>
+            <span class="photo-error popup__error"></span>
+          </label>
+          <button class="popup__button" id="profile__avatar-button" type="submit">Сохранить</button>
+        </div>
+      </form>
       </section>
     </main>
     <footer class="footer">

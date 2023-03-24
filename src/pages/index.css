@@ -5,7 +5,7 @@
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__image/profile__image.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__add/profile__add.css);
@@ -40,3 +40,7 @@
 @import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/_opacity/popup_opacity.css);
+@import url(../blocks/popup/__delete-photo/popup__delete-photo.css);
+@import url(../blocks/popup/__delete-body/popup__delete-body.css);
+@import url(../blocks/profile/__avatar-outside/profile__avatar-outside.css);
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
