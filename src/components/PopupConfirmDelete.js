@@ -18,7 +18,6 @@ export default class PopupConfirmDelete extends Popup {
   _submitForm(event) {
     event.preventDefault();
     this._submitHandler(this._card, this._cardID, this._submitButton);
-    console.log(this._submitHandler(this._card, this._cardID, this._submitButton))
   }
 
   setEventListeners() {

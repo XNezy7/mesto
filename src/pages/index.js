@@ -78,7 +78,6 @@ function handleCardFormSubmit(value, submitButton) {
     .addCard(newUserCard)
     .then((res) => {
       container.renderItem(res, userInfo.id);
-      console.log(res)
 
       formCard.clearForm();
       cardPopup.close();
