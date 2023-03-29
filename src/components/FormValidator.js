@@ -15,6 +15,18 @@ export default class FormValidator {
       this._config.submitButtonSelector
     );
   }
+  
+  clearForm() {
+    this._form.reset();
+
+    this._inputList.forEach((input) => {
+      input.classList.remove(this._config.inputErrorClass);
+    });
+
+    this._inputListError.forEach((span) => {
+      span.textContent = '';
+    });
+  }
 
   _showInputError(inputElement) {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);

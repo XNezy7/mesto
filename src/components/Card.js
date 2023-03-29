@@ -3,14 +3,14 @@ export default class Card {
     this._title = card.name;
     this._url = card.link;
     this._likesArr = card.likes;
-    this._likes = card.likes;
+    this._likes = card.likes.length;
     this._id = card._id;
     this._ownerID = card.owner._id;
     this._templateSelectors = templateSelectors;
     this._openPopup = openImagePopup;
     this._openDeletePopup = openDeletePopup;
-    this._userID = userID;
     this._clickLike = clickLike;
+    this._userID = userID;
   }
 
   _getTemplate(templateSelector) {

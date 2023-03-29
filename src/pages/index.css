@@ -44,3 +44,6 @@
 @import url(../blocks/popup/__delete-body/popup__delete-body.css);
 @import url(../blocks/profile/__avatar-outside/profile__avatar-outside.css);
 @import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
+@import url(../blocks/card/__group/card__group.css);
+@import url(../blocks/popup/__body-avatar/popup__body-avatar.css);
+@import url(../blocks/popup/__title-fix/popup__title-fix.css);

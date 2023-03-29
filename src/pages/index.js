@@ -13,14 +13,15 @@ const jobInput = document.querySelector("#job");
 const profileButton = document.querySelector("#profile_edit");
 const cardFormElement = document.querySelector("#card_popup");
 const buttonAddCard = document.querySelector("#open_pop_up");
-const placesTemplate = document.querySelector(".places").content;
 export const photoExpand = document.querySelector("#photo_popup");
-export const inputsCardForm = Array.from(cardFormElement.querySelectorAll(".popup__input"));
+export const inputsCardForm = Array.from(
+  cardFormElement.querySelectorAll(".popup__input")
+);
 const cardForm = document.querySelector(".popup__form_card");
 const profileForm = document.querySelector(".popup__form_profile");
 const avatarForm = document.querySelector(".popup__form_avatar");
-const changeAvatar = document.querySelector('#profile__avatar-button');
-
+const changeAvatar = document.querySelector(".profile__avatar-button");
+const profileAvatar = document.querySelector(".profile__avatar");
 
 const configValidation = {
   formSelector: ".popup__form",
@@ -31,41 +32,19 @@ const configValidation = {
   errorClass: "popup__error_visible",
 };
 
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62',
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-62",
   headers: {
-    authorization: 'a8ffb240-ff73-4a9e-8ad1-0029aba72e90',
-    'Content-Type': 'application/json'
-  }
-}); 
+    authorization: "a8ffb240-ff73-4a9e-8ad1-0029aba72e90",
+    "Content-Type": "application/json",
+  },
+});
 
-function openImagePopup(alt, src){
+function changeButtonText(button, buttonText) {
+  button.textContent = buttonText;
+}
+
+function openImagePopup(src, alt) {
   photoPopup.open(src, alt);
 }
 
@@ -86,9 +65,45 @@ function confirmPopupHandler(element, elementID, submitButton) {
     .finally(() => changeButtonText(submitButton, originalButtonText));
 }
 
+function handleCardFormSubmit(value, submitButton) {
+  const originalButtonText = submitButton.textContent;
+  changeButtonText(submitButton, "Loading...");
+
+  const newUserCard = {
+    name: value.place,
+    link: value.photo,
+  };
+
+  api
+    .addCard(newUserCard)
+    .then((res) => {
+      container.renderItem(res, userInfo.id);
+      console.log(res)
+
+      formCard.clearForm();
+      cardPopup.close();
+    })
+    .catch((e) => console.log(e))
+    .finally(() => changeButtonText(submitButton, originalButtonText));
+}
+
+function handleProfileFormSubmit(element, submitButton) {
+  const originalButtonText = submitButton.textContent;
+  changeButtonText(submitButton, "Loading...");
+  
+  api
+    .setUserInfo(element.Name, element.Work)
+
+    .then((res) => {
+      userInfo.setUserInfo({ name: res.name, about: res.about });
+    })
+    .catch((e) => console.log("Delete Error: ", e))
+    .finally(() => changeButtonText(submitButton, originalButtonText));
+}
+
 function avatarSubmitHandler(value, submitButton) {
   const originalButtonText = submitButton.textContent;
-  changeButtonText(submitButton, 'Loading...');
+  changeButtonText(submitButton, "Loading...");
 
   api
     .setAvatar(value.inputAvatarUrl)
@@ -102,52 +117,48 @@ function avatarSubmitHandler(value, submitButton) {
     .finally(() => changeButtonText(submitButton, originalButtonText));
 }
 
-function addCard(item, userID){
+function addCard(item, userID) {
   const newCard = createCard(item, userID);
   container.addItem(newCard);
 }
 
 function createCard(item, userID) {
-  return new Card(item, {withTrash: '#placesWithTrash', withOutTrash: '#placesWithOutTrash'}, openImagePopup, openDeletePopup, clickLike, userID).createCard();
+  return new Card(
+    item,
+    {withTrash: "#placesWithTrash", withOutTrash: "#placesWithOutTrash" },
+    openImagePopup,
+    openDeletePopup,
+    clickLike,
+    userID
+  ).createCard();
 }
 
-const container = new Section(
-  addCard,
-  "#places_list"
-);
+const container = new Section(addCard, "#places_list");
 
-
-const avatarPopup = new PopupWithForm('#popup_avatar', avatarSubmitHandler);
+const avatarPopup = new PopupWithForm("#popup_avatar", avatarSubmitHandler);
 avatarPopup.setEventListeners();
-// const confirmPopup = new PopupConfirmDelete('#popup_delete', confirmPopupHandler);
-// confirmPopup.setEventListeners();
+const confirmPopup = new PopupConfirmDelete('#popup_delete', confirmPopupHandler);
+confirmPopup.setEventListeners();
 const cardPopup = new PopupWithForm("#card_popup", handleCardFormSubmit);
 cardPopup.setEventListeners();
-const profilePopup = new PopupWithForm("#profile_popup", handleProfileFormSubmit);
+const profilePopup = new PopupWithForm(
+  "#profile_popup",
+  handleProfileFormSubmit
+);
 profilePopup.setEventListeners();
-const photoPopup = new PopupWithImage('#photo_popup');
+const photoPopup = new PopupWithImage("#photo_popup");
 photoPopup.setEventListeners();
+
 
 const userInfo = new UserInfo({
   name: "#profile_title",
-  job: "#profile_subtitle"
+  about: "#profile_subtitle"
 });
 
-function handleProfileFormSubmit(value) {
-  userInfo.setUserInfo({name:value.Name, job:value.Work})
-  profilePopup.close();
-}
-
-function handleCardFormSubmit(value) {
-  const item = {name:value.place, link: value.photo};
-  addCard(item);
-  cardPopup.close();
-}
-
 profileButton.addEventListener("click", () => {
-  const {name, job} = userInfo.getUserInfo();
+  const { name, about } = userInfo.getUserInfo();
   nameInput.value = name;
-  jobInput.value = job;
+  jobInput.value = about;
   profilePopup.open();
 });
 
@@ -162,32 +173,30 @@ function clickLike(element, elementId, isLiked) {
     api
       .removeLike(elementId)
       .then((updatedCard) => {
-        element.updateLikes(updatedCard.likes.length);
+        element._handleLikeClick(updatedCard.likes.length);
       })
-      .catch((err) => console.log('Remove Like Error: ', err));
+      .catch((err) => console.log("Remove Like Error: ", err));
   } else {
     api
       .addLike(elementId)
       .then((updatedCard) => {
-        element.updateLikes(updatedCard.likes.length);
+        element._handleLikeClick(updatedCard.likes.length);
       })
-      .catch((err) => console.log('Add Like Error: ', err));
+      .catch((err) => console.log("Add Like Error: ", err));
   }
 }
 
-Promise.all([
-  api.getInitialCards(), 
-  api.getUserInfo()
+Promise.all([api.getInitialCards(), api.getUserInfo()]).then((res) => {
+  const initialCards = res[0];
+  const user = res[1];
 
-]).then((res) => {
-  const initialCards = res[0]
-  const user = res[1]
-  userInfo.id = user._id
-  container.renderItems(initialCards, userInfo.id) 
-  
-})
+  profileAvatar.src = user.avatar;
+  userInfo.setUserInfo(user);
+  userInfo.id = user._id;
+  container.renderItems(initialCards, userInfo.id);
+});
 
-changegvatar.addEventListener('click', () => {
+changeAvatar.addEventListener("click", () => {
   formAvatar.clearForm();
   formAvatar.toggleButtonState();
   avatarPopup.open();

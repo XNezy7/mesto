@@ -3,7 +3,7 @@ import Popup from './Popup.js';
 export default class PopupConfirmDelete extends Popup {
   constructor(popupSelector, submitHandler) {
     super(popupSelector);
-    this._form = this.popup.querySelector('.popup__form');
+    this._form = this.popup.querySelector('#popup_delete-body');
     this._submitHandler = submitHandler;
     this._submitForm = this._submitForm.bind(this);
     this._submitButton = this._form.querySelector('.popup__button');
@@ -18,6 +18,7 @@ export default class PopupConfirmDelete extends Popup {
   _submitForm(event) {
     event.preventDefault();
     this._submitHandler(this._card, this._cardID, this._submitButton);
+    console.log(this._submitHandler(this._card, this._cardID, this._submitButton))
   }
 
   setEventListeners() {
