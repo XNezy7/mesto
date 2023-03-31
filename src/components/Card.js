@@ -23,7 +23,7 @@ export default class Card {
     this._isLiked = !this._isLiked;
   }
 
-  _handleLikeClick(count) {
+  handleLikeClick(count) {
     this._elementLikeCounter.textContent = count;
   }
 

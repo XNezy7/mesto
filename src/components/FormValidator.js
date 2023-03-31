@@ -23,9 +23,9 @@ export default class FormValidator {
       input.classList.remove(this._config.inputErrorClass);
     });
 
-    this._inputListError.forEach((span) => {
-      span.textContent = '';
-    });
+    // this._inputListError.forEach((span) => {
+    //   span.textContent = '';
+    // });
   }
 
   _showInputError(inputElement) {
