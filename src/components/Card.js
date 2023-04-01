@@ -18,13 +18,13 @@ export default class Card {
   }
 
   _changeLike() {
-    this._elementLike.classList.toggle('card__like-button_black');
     this._clickLike(this, this._id, this._isLiked);
-    this._isLiked = !this._isLiked;
   }
 
   handleLikeClick(count) {
     this._elementLikeCounter.textContent = count;
+    this._elementLike.classList.toggle('card__like-button_black');
+    this._isLiked = !this._isLiked;
   }
 
   _removeCard() {

@@ -50,7 +50,7 @@ function confirmPopupHandler(element, elementID, submitButton) {
     .removeCard(elementID)
     .then(() => {
       element.remove();
-      this.close();
+      confirmPopup.close();
     })
     .catch((e) => console.log('Delete Error: ', e))
     .finally(() => changeButtonText(submitButton, originalButtonText));
