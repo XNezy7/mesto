@@ -7,21 +7,17 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Api from "../components/Api.js";
 import PopupConfirmDelete from "../components/PopupConfirmDelete.js";
 import "./index.css";
-import{
+import {
   nameInput,
   jobInput,
   profileButton,
-  cardFormElement,
   buttonAddCard,
-  photoExpand,
-  inputsCardForm,
   cardForm,
   profileForm,
   avatarForm,
   changeAvatar,
-  profileAvatar,
   configValidation,
-} from "../utils/constants.js"
+} from "../utils/constants.js";
 
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-62",
@@ -45,14 +41,14 @@ function openDeletePopup(element, elementID) {
 
 function confirmPopupHandler(element, elementID, submitButton) {
   const originalButtonText = submitButton.textContent;
-  changeButtonText(submitButton, 'Loading...');
+  changeButtonText(submitButton, "Loading...");
   api
     .removeCard(elementID)
     .then(() => {
       element.remove();
       confirmPopup.close();
     })
-    .catch((e) => console.log('Delete Error: ', e))
+    .catch((e) => console.log("Delete Error: ", e))
     .finally(() => changeButtonText(submitButton, originalButtonText));
 }
 
@@ -70,7 +66,9 @@ function handleCardFormSubmit(value, submitButton) {
     .then((res) => {
       container.renderItem(res, userInfo.id);
     })
-    .then(() =>{cardPopup.close()})
+    .then(() => {
+      cardPopup.close();
+    })
     .catch((e) => console.log(e))
     .finally(() => changeButtonText(submitButton, originalButtonText));
 }
@@ -78,14 +76,16 @@ function handleCardFormSubmit(value, submitButton) {
 function handleProfileFormSubmit(element, submitButton) {
   const originalButtonText = submitButton.textContent;
   changeButtonText(submitButton, "Loading...");
-  
+
   api
     .setUserInfo(element.Name, element.Work)
 
     .then((res) => {
       userInfo.setUserInfo(res);
     })
-    .then(() =>{profilePopup.close()})
+    .then(() => {
+      profilePopup.close();
+    })
     .catch((e) => console.log("Delete Error: ", e))
     .finally(() => changeButtonText(submitButton, originalButtonText));
 }
@@ -100,7 +100,9 @@ function avatarSubmitHandler(value, submitButton) {
       // userInfo.setUserInfo({avatar: res.avatar})
       userInfo.setUserInfo(res);
     })
-    .then(() =>{avatarPopup.close()})
+    .then(() => {
+      avatarPopup.close();
+    })
     .catch((e) => console.log(e))
     .finally(() => changeButtonText(submitButton, originalButtonText));
 }
@@ -113,7 +115,7 @@ function addCard(item, userID) {
 function createCard(item, userID) {
   return new Card(
     item,
-    {withTrash: "#placesWithTrash", withOutTrash: "#placesWithOutTrash" },
+    { withTrash: "#placesWithTrash", withOutTrash: "#placesWithOutTrash" },
     openImagePopup,
     openDeletePopup,
     clickLike,
@@ -125,7 +127,10 @@ const container = new Section(addCard, "#places_list");
 
 const avatarPopup = new PopupWithForm("#popup_avatar", avatarSubmitHandler);
 avatarPopup.setEventListeners();
-const confirmPopup = new PopupConfirmDelete('#popup_delete', confirmPopupHandler);
+const confirmPopup = new PopupConfirmDelete(
+  "#popup_delete",
+  confirmPopupHandler
+);
 confirmPopup.setEventListeners();
 const cardPopup = new PopupWithForm("#card_popup", handleCardFormSubmit);
 cardPopup.setEventListeners();
@@ -137,11 +142,10 @@ profilePopup.setEventListeners();
 const photoPopup = new PopupWithImage("#photo_popup");
 photoPopup.setEventListeners();
 
-
 const userInfo = new UserInfo({
   name: "#profile_title",
   about: "#profile_subtitle",
-  avatar: ".profile__avatar"
+  avatar: ".profile__avatar",
 });
 
 profileButton.addEventListener("click", () => {
@@ -175,15 +179,16 @@ function clickLike(element, elementId, isLiked) {
   }
 }
 
-Promise.all([api.getInitialCards(), api.getUserInfo()]).then((res) => {
-  const initialCards = res[0];
-  const user = res[1];
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then((res) => {
+    const initialCards = res[0];
+    const user = res[1];
 
-  userInfo.setUserInfo(user);
-  userInfo.id = user._id;
-  container.renderItems(initialCards, userInfo.id);
-})
-.catch((e) => console.log(e));
+    userInfo.setUserInfo(user);
+    userInfo.id = user._id;
+    container.renderItems(initialCards, userInfo.id);
+  })
+  .catch((e) => console.log(e));
 
 changeAvatar.addEventListener("click", () => {
   formAvatar.clearForm();
